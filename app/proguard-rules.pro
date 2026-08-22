@@ -41,3 +41,19 @@
 -dontwarn com.startapp.sdk.*.*
 -dontwarn com.startapp.sdk.adsbase.*.*
 -dontwarn com.google.android.gms.internal.ads.*
+
+# ==========================================
+# Fanap POS SDK
+# ==========================================
+
+# اگر کلاس‌های SDK در پروژه‌ات وجود دارند
+-keep class com.fanap.androidpos.** { *; }
+
+# مدل‌های پاسخ/درخواست خودت که ممکن است با reflection
+# توسط Gson/Moshi استفاده شوند
+-keep class ir.postex.pos.data.model.** { *; }
+
+# اگر PosResponse و PosSettingsResponse در package دیگری هستند،
+# package واقعی خودت را جایگزین کن.
+-keep class ir.postex.pos.**.PosResponse { *; }
+-keep class ir.postex.pos.**.PosSettingsResponse { *; }
