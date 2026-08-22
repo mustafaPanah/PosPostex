@@ -4,6 +4,8 @@ package com.persianswitch.smartpos.webservice
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+
+
 @JsonClass(generateAdapter = true)
 data class LoginResponse(
     @Json(name = "default_address_id")
@@ -23,7 +25,7 @@ data class LoginResponse(
     @Json(name = "roles")
     val roles: List<String?>?,
     @Json(name = "token")
-    val token: String,
+    val token: String?,
     @Json(name = "username")
     val username: String?,
     @Json(name = "value_added_requirements")

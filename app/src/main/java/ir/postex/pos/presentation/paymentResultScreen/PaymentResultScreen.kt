@@ -33,6 +33,7 @@ import androidx.navigation.NavController
 import ir.postex.pos.R
 import ir.postex.pos.presentation.main.navigation.NavigationRoutes
 import ir.postex.pos.presentation.theme.MainPrimary
+import ir.postex.pos.utils.PriceFormatter
 
 @Composable
 fun PaymentResultScreen(
@@ -49,18 +50,18 @@ fun PaymentResultScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
-                .padding(horizontal = 24.dp, vertical = 32.dp),
+                .padding(horizontal = 24.dp, vertical = 18.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             // آیکون موفق / ناموفق
             Image(
                 painter = painterResource(id = iconRes),
                 contentDescription = null,
-                modifier = Modifier.size(160.dp)
+                modifier = Modifier.size(140.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -87,7 +88,7 @@ fun PaymentResultScreen(
                         .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    TransactionRow(label = "مبلغ (تومان)", value = amount)
+                    TransactionRow(label = "مبلغ (تومان)", value = PriceFormatter.format(amount.substring(0,amount.length-1)))
                     TransactionRow(label = "شماره پیگیری", value = trackingNumber)
                     TransactionRow(label = "تاریخ تراکنش", value = dateTime)
                 }
@@ -107,8 +108,8 @@ fun PaymentResultScreen(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(48.dp),
-                shape = RoundedCornerShape(8.dp),
+                    .height(64.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.White,       // پس‌زمینه سفید
                     contentColor = MainPrimary    // رنگ متن آبی
@@ -118,7 +119,7 @@ fun PaymentResultScreen(
             ) {
                 Text(
                     text = "بازگشت به خانه",
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Medium
                 )
             }
@@ -136,7 +137,7 @@ fun TransactionRow(label: String, value: String) {
             .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text(text = label, color = Color.Gray)
-        Text(text = value, fontWeight = FontWeight.Medium)
+        Text(text = label, color = Color.Gray, fontSize = 20.sp)
+        Text(text = value, fontWeight = FontWeight.Medium, fontSize = 20.sp)
     }
 }

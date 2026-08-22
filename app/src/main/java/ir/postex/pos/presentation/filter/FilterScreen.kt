@@ -59,6 +59,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ir.postex.pos.presentation.theme.MainPrimary
+import ir.postex.pos.presentation.widget.UiDefaults
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -108,9 +109,7 @@ fun FilterScreen(navController: NavController) {
 
             // 🔙 نوار بالایی
             Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = {}) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "بازگشت")
-                }
+
                 Text(
                     text = "فیلتر",
                     modifier = Modifier.weight(1f),
@@ -118,7 +117,10 @@ fun FilterScreen(navController: NavController) {
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold
                 )
-                Spacer(modifier = Modifier.width(48.dp)) // فضا برای تراز وسطی عنوان
+             //   Spacer(modifier = Modifier.width(48.dp))
+                IconButton(onClick = {navController.popBackStack()}) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "بازگشت")
+                }// فضا برای تراز وسطی عنوان
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -142,31 +144,37 @@ fun FilterScreen(navController: NavController) {
                 showSheet = true
             }
             Spacer(modifier = Modifier.height(16.dp))
-            // 🔽 نوع تراکنش
-            TransactionTypeDropdown(
-                selectedType = selectedTransactionType,
-                items = transactionTypes,
-                onSelect = { selectedTransactionType = it }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            // 🔢 شماره پیگیری
-            OutlinedTextField(
-                value = trackingNumber,
-                onValueChange = { trackingNumber = it },
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("شماره پیگیری") },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            // 🔢 شناسه سفارش
-            OutlinedTextField(
-                value = orderId,
-                onValueChange = { orderId = it },
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("شناسه سفارش") },
-                singleLine = true
-            )
+//            // 🔽 نوع تراکنش
+//            TransactionTypeDropdown(
+//                selectedType = selectedTransactionType,
+//                items = transactionTypes,
+//                onSelect = { selectedTransactionType = it }
+//            )
+//            Spacer(modifier = Modifier.height(16.dp))
+//            // 🔢 شماره پیگیری
+//            OutlinedTextField(
+//                value = trackingNumber,
+//                onValueChange = { trackingNumber = it },
+//                shape = UiDefaults.CommonShape,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(UiDefaults.Height),
+//                placeholder = { Text("شماره پیگیری") },
+//                singleLine = true,
+//                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+//            )
+//            Spacer(modifier = Modifier.height(16.dp))
+//            // 🔢 شناسه سفارش
+//            OutlinedTextField(
+//                value = orderId,
+//                onValueChange = { orderId = it },
+//                shape = UiDefaults.CommonShape,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(UiDefaults.Height),
+//                placeholder = { Text("شناسه سفارش") },
+//                singleLine = true
+//            )
 
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -174,9 +182,9 @@ fun FilterScreen(navController: NavController) {
             // دکمه‌ها
             Button(
                 onClick = { /* اعمال فیلتر */ },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(UiDefaults.Height),
 
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(UiDefaults.Radius)
             ) {
                 Text("اعمال", fontSize = 16.sp)
             }
@@ -191,8 +199,9 @@ fun FilterScreen(navController: NavController) {
                     orderId = ""
                     selectedTransactionType = ""
                 },
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
+                modifier = Modifier.fillMaxWidth().height(UiDefaults.Height),
+
+                shape = RoundedCornerShape(UiDefaults.Radius)
             ) {
                 Text("پاک کردن", fontSize = 16.sp)
             }
@@ -204,7 +213,7 @@ fun FilterScreen(navController: NavController) {
 fun FilterField(text: String, icon: ImageVector, onClick: () -> Unit) {
     OutlinedButton(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().height(UiDefaults.Height),
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(1.dp, Color.LightGray),
         colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Black)
@@ -231,7 +240,7 @@ fun TransactionTypeDropdown(
     Box {
         OutlinedButton(
             onClick = { expanded = true },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().height(UiDefaults.Height),
             shape = RoundedCornerShape(8.dp),
             border = BorderStroke(1.dp, Color.Gray),
             colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Black)

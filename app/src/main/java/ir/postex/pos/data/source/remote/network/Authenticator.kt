@@ -2,88 +2,136 @@ package ir.postex.pos.data.source.remote.network
 
 import android.app.Application
 import ir.postex.pos.data.source.local.DataStoreConstants
+import ir.postex.pos.data.source.local.DataStoreConstants.ACCESS_TOKEN
+import ir.postex.pos.data.source.local.DataStoreConstants.REFRESH_TOKEN
 import ir.postex.pos.data.source.local.DataStoreManager
+import ir.postex.pos.data.source.remote.Services
+import ir.postex.pos.domain.model.poslogin.RefreshTokenRequest
+import ir.postex.pos.utils.AUTHORIZATION_HEADER_KEY
+import ir.postex.pos.utils.TOKEN_PREFIX
+import ir.postex.pos.utils.WITHOUT_TOKEN_ANNOTATION
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
+import timber.log.Timber
 import javax.inject.Inject
+import javax.inject.Named
+import javax.inject.Singleton
 
 
+@Singleton
 class TokenAuthenticator @Inject constructor(
     private val dataStoreManager: DataStoreManager,
-    private val context : Application
-): Authenticator {
+    @Named(WITHOUT_TOKEN_ANNOTATION)
+    private val service: Services
+) : Authenticator {
 
+    override fun authenticate(
+        route: Route?,
+        response: Response
+    ): Request? {
 
-//    private lateinit var service: ApiHelper
-//    private val appPref = AppPreferenceHelper()
+        Timber.tag("AUTH").d("============== AUTHENTICATOR ==============")
+        Timber.tag("AUTH").d("Authenticator Called")
 
-    @OptIn(DelicateCoroutinesApi::class)
-    override fun authenticate(route: Route?, response: Response): Request? {
+        // جلوگیری از Loop بی‌نهایت
+        if (responseCount(response) >= 2) {
+            Timber.tag("AUTH").d("Response Count >= 2")
+            return null
+        }
 
-//        val newToken = requestToRefresh()
+        // خواندن Refresh Token
+        val refreshToken = runBlocking {
+            dataStoreManager.getData(REFRESH_TOKEN).firstOrNull()
+        }
 
-//        if (newToken != null) {
-//            GlobalScope.launch {
-//                dataStoreManager.updateData(DataStoreManager.PreferenceKeys.ACCESS_TOKEN, newToken.response?.accessToken ?: "")
-//                dataStoreManager.updateData(DataStoreManager.PreferenceKeys.REFRESH_TOKEN,newToken.response?.refreshToken ?: "")
-//            appPref.setLogin(true)
+        Timber.tag("AUTH").d("Refresh Token : $refreshToken")
+
+        if (refreshToken.isNullOrEmpty()) {
+            Timber.tag("AUTH").d("Refresh Token Is Empty")
+            return null
+        }
+
+        Timber.tag("AUTH").d("Calling Refresh Api...")
+
+        val refreshResponse = try {
+            runBlocking {
+                service.refreshToken(
+                    RefreshTokenRequest(
+                        refreshToken = refreshToken
+                    )
+                )
+            }
+        } catch (e: Exception) {
+            Timber.tag("AUTH").e(e, "Refresh Api Exception")
+            return null
+        }
+
+        Timber.tag("AUTH").d("Refresh Response Code : ${refreshResponse.code()}")
+        Timber.tag("AUTH").d("Refresh Is Successful : ${refreshResponse.isSuccessful}")
+
+        if (!refreshResponse.isSuccessful) {
+
+            Timber.tag("AUTH").d("Refresh Failed")
+
+//            runBlocking {
+//                dataStoreManager.clearDataStore()
 //            }
 
+            return null
+        }
 
-//            C.accessToken = appPref.getAccessToken()!!
-//            C.refreshToken = appPref.getRefreshToken()
+        val body = refreshResponse.body()
 
-            return response.request.newBuilder()
-                .header("Accept", "application/json")
-                .header("Authorization", dataStoreManager.getData(DataStoreConstants.ACCESS_TOKEN).toString())
-                .build()
-//        } else run {
-////            appPref.setLogin(false)
-//            goToLogin()
-//            // refresh failed , maybe you can logout user
-//            // returning null is critical here, because if you do not return null
-//            // it will try to refresh token continuously like 1000 times.
-//            // also you can try 2-3-4 times by depending you before logging out your user
-//            return null
-//        }
+        Timber.tag("AUTH").d("Refresh Body : $body")
+
+        if (body == null) {
+            Timber.tag("AUTH").d("Refresh Body Is Null")
+            return null
+        }
+
+        Timber.tag("AUTH").d("Access Token : ${body.accessToken}")
+        Timber.tag("AUTH").d("Refresh Token : ${body.refreshToken}")
+
+        runBlocking {
+
+            dataStoreManager.updateData(
+                ACCESS_TOKEN,
+                body.accessToken
+            )
+
+            dataStoreManager.updateData(
+                REFRESH_TOKEN,
+                body.refreshToken
+            )
+        }
+
+        Timber.tag("AUTH").d("Tokens Saved Successfully")
+        Timber.tag("AUTH").d("Retrying Original Request...")
+
+        return response.request
+            .newBuilder()
+            .header(
+                AUTHORIZATION_HEADER_KEY,
+                "$TOKEN_PREFIX ${body.accessToken}"
+            )
+            .build()
     }
 
-    private fun requestToRefresh()
-//    : VerifyResponse?
-    {
+    private fun responseCount(response: Response): Int {
 
-//        service = ApiClient.getBaseClient().create(ApiHelper::class.java)
-//
-//        val json = JsonObject()
-//        json.addProperty("refresh_token", C.refreshToken)
-//        json.addProperty("client_id", BuildConfig.client_id)
-//        json.addProperty("client_secret", BuildConfig.client_secret)
-//
-//        val tasks = service.refreshToken(json)
-//
-//        var newToken: VerifyResponse? = null
-//        try {
-//            val response = tasks.execute()
-//
-//            if (response.isSuccessful) {
-//                newToken = Gson().fromJson(response.body()!!.toString(), VerifyResponse::class.java)
-//            }
-//        } catch (e: IOException) {
-//            e.printStackTrace()
-//        }
-//        return newToken
-    }
+        var result = 1
+        var current = response.priorResponse
 
-    private fun goToLogin() {
+        while (current != null) {
+            result++
+            current = current.priorResponse
+        }
 
-//        val loginIntent = Intent()
-//        loginIntent.setClass(MvvmApp.context(), LoginActivity::class.java)
-//        loginIntent.action = LoginActivity::class.java.name
-//        loginIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//        MvvmApp.context().startActivity(loginIntent)
-
+        return result
     }
 }

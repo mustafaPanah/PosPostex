@@ -12,19 +12,26 @@ import retrofit2.Retrofit
 import javax.inject.Named
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 class ApiModule {
 
     @Singleton
     @Provides
-    fun provideServiceWithOutToken(@Named(WITHOUT_TOKEN_ANNOTATION) retrofit: Retrofit): Services =
+    @Named(WITHOUT_TOKEN_ANNOTATION)
+    fun provideServiceWithOutToken(
+        @Named(WITHOUT_TOKEN_ANNOTATION)
+        retrofit: Retrofit
+    ): Services =
         retrofit.create(Services::class.java)
 
-   @Singleton
+    @Singleton
     @Provides
-    fun provideServiceWithToken(@Named(WITH_TOKEN_ANNOTATION) retrofit: Retrofit): MainServices =
+    @Named(WITH_TOKEN_ANNOTATION)
+    fun provideServiceWithToken(
+        @Named(WITH_TOKEN_ANNOTATION)
+        retrofit: Retrofit
+    ): MainServices =
         retrofit.create(MainServices::class.java)
 
-    //test git
 }

@@ -1,6 +1,10 @@
 package ir.postex.pos.presentation.main.navigation
 
+import android.net.Uri
+import ir.postex.pos.domain.model.inquiry.InquiryResponse
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 sealed interface NavigationRoutes {
     @Serializable
@@ -16,17 +20,31 @@ sealed interface NavigationRoutes {
     data object  PaymentScreen : NavigationRoutes
 
     @Serializable
-    data object  OrderDetailsScreen : NavigationRoutes
+    data class OrderDetailsScreen(val parcelNo:String,val inquiryData: String) : NavigationRoutes
 
     @Serializable
     data object VerifyScreen : NavigationRoutes
 
     @Serializable
-    data object PaymentResultScreen : NavigationRoutes
+    data class PaymentResultScreen(val isSuccess: Boolean,
+                                    val amount: String,
+                                    val trackingNumber: String,
+                                    val dateTime: String) : NavigationRoutes
     @Serializable
     data object IncreaseBalanceScreen : NavigationRoutes
     @Serializable
     data object ReportScreen : NavigationRoutes
     @Serializable
     data object FilterScreen : NavigationRoutes
+
+    @Serializable
+    data object PaymentSuccessScreen : NavigationRoutes
+    @Serializable
+    data object ConfigScreen : NavigationRoutes
+
+//    data object OrderDetailsScreen : NavigationRoutes {
+//        fun passData(inquiryData: InquiryResponse): String {
+//            return "order_details?inquiryData=${Uri.encode(Json.encodeToString(inquiryData))}"
+//        }
+//    }
 }

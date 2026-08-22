@@ -2,13 +2,17 @@ package ir.postex.pos.di
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import ir.postex.pos.data.source.local.DataStoreManager
+import ir.postex.pos.data.source.remote.Services
 import ir.postex.pos.data.source.remote.network.HeaderInterceptor
+import ir.postex.pos.data.source.remote.network.TokenAuthenticator
 import ir.postex.pos.utils.BASE_URL
 import ir.postex.pos.utils.WITHOUT_TOKEN_ANNOTATION
 import ir.postex.pos.utils.WITH_TOKEN_ANNOTATION
@@ -25,6 +29,96 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
+//@Module
+//@InstallIn(SingletonComponent::class)
+//class RetrofitModule {
+//
+//    @Singleton
+//    @Provides
+//    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
+//        HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
+//
+//
+//    @Provides
+//    @Singleton
+//    fun provideChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor =
+//        ChuckerInterceptor.Builder(context).build()
+//
+//    @Singleton
+//    @Provides
+//    fun provideHeaderInterceptor(dataStoreManager: DataStoreManager) =
+//        HeaderInterceptor(dataStoreManager)
+//
+//    @Named(WITH_TOKEN_ANNOTATION)
+//    @Singleton
+//    @Provides
+//    fun provideOkHttpClientWithToken(
+//        chuckerInterceptor: ChuckerInterceptor, headerInterceptor: HeaderInterceptor,prettyLogInterceptor:PrettyLogInterceptor
+//    ): OkHttpClient =
+//        OkHttpClient.Builder()
+//            .addInterceptor(provideHttpLoggingInterceptor())
+//            .addInterceptor(headerInterceptor)
+//            .addInterceptor(chuckerInterceptor)
+//            .addInterceptor(prettyLogInterceptor)
+//            .retryOnConnectionFailure(true)
+//            .connectTimeout(30, TimeUnit.SECONDS)
+//            .writeTimeout(30, TimeUnit.SECONDS)
+//            .readTimeout(30, TimeUnit.SECONDS)
+//            .build()
+//
+//    @Named(WITHOUT_TOKEN_ANNOTATION)
+//    @Singleton
+//    @Provides
+//    fun provideOkHttpClientWithoutToken(
+//        chuckerInterceptor: ChuckerInterceptor, headerInterceptor: HeaderInterceptor,prettyLogInterceptor:PrettyLogInterceptor
+//    ): OkHttpClient =
+//        OkHttpClient.Builder()
+//            .addInterceptor(provideHttpLoggingInterceptor())
+//            .addInterceptor(chuckerInterceptor)
+//            .addInterceptor(prettyLogInterceptor)
+//            .retryOnConnectionFailure(true)
+//            .connectTimeout(30, TimeUnit.SECONDS)
+//            .writeTimeout(30, TimeUnit.SECONDS)
+//            .readTimeout(30, TimeUnit.SECONDS)
+//            .build()
+//
+//    @Provides
+//    @Singleton
+//    fun provideConverterFactory(): Converter.Factory {
+//        val json = Json { ignoreUnknownKeys = true }
+//        return json.asConverterFactory("application/json".toMediaType())
+//    }
+//
+//    @Named(WITH_TOKEN_ANNOTATION)
+//    @Singleton
+//    @Provides
+//    fun provideRetrofitWithToken(
+//        @Named(WITH_TOKEN_ANNOTATION) okHttpClient: OkHttpClient,
+//        converter: Converter.Factory
+//    ): Retrofit =
+//        Retrofit.Builder()
+//            .baseUrl(BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addConverterFactory(converter)
+//            .client(okHttpClient)
+//            .build()
+//
+//    @Named(WITHOUT_TOKEN_ANNOTATION)
+//    @Singleton
+//    @Provides
+//    fun provideRetrofitWithoutToken(
+//        @Named(WITHOUT_TOKEN_ANNOTATION) okHttpClient: OkHttpClient,
+//        converter: Converter.Factory
+//    ): Retrofit =
+//        Retrofit.Builder()
+//            .baseUrl(BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addConverterFactory(converter)
+//            .client(okHttpClient)
+//            .build()
+//
+//}
+
 @Module
 @InstallIn(SingletonComponent::class)
 class RetrofitModule {
@@ -33,7 +127,6 @@ class RetrofitModule {
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
-
 
     @Provides
     @Singleton
@@ -45,17 +138,23 @@ class RetrofitModule {
     fun provideHeaderInterceptor(dataStoreManager: DataStoreManager) =
         HeaderInterceptor(dataStoreManager)
 
+
+
     @Named(WITH_TOKEN_ANNOTATION)
     @Singleton
     @Provides
     fun provideOkHttpClientWithToken(
-        chuckerInterceptor: ChuckerInterceptor, headerInterceptor: HeaderInterceptor,prettyLogInterceptor:PrettyLogInterceptor
+        chuckerInterceptor: ChuckerInterceptor,
+        headerInterceptor: HeaderInterceptor,
+        prettyLogInterceptor: PrettyLogInterceptor,
+        tokenAuthenticator: TokenAuthenticator
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(provideHttpLoggingInterceptor())
             .addInterceptor(headerInterceptor)
             .addInterceptor(chuckerInterceptor)
             .addInterceptor(prettyLogInterceptor)
+            .authenticator(tokenAuthenticator)
             .retryOnConnectionFailure(true)
             .connectTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
@@ -66,7 +165,9 @@ class RetrofitModule {
     @Singleton
     @Provides
     fun provideOkHttpClientWithoutToken(
-        chuckerInterceptor: ChuckerInterceptor, headerInterceptor: HeaderInterceptor,prettyLogInterceptor:PrettyLogInterceptor
+        chuckerInterceptor: ChuckerInterceptor,
+        headerInterceptor: HeaderInterceptor,
+        prettyLogInterceptor: PrettyLogInterceptor
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(provideHttpLoggingInterceptor())
@@ -80,9 +181,10 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideConverterFactory(): Converter.Factory {
-        val json = Json { ignoreUnknownKeys = true }
-        return json.asConverterFactory("application/json".toMediaType())
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())  // ✅ این خط حیاتی است
+            .build()
     }
 
     @Named(WITH_TOKEN_ANNOTATION)
@@ -90,12 +192,11 @@ class RetrofitModule {
     @Provides
     fun provideRetrofitWithToken(
         @Named(WITH_TOKEN_ANNOTATION) okHttpClient: OkHttpClient,
-        converter: Converter.Factory
+        moshi: Moshi
     ): Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addConverterFactory(converter)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))  // فقط Moshi
             .client(okHttpClient)
             .build()
 
@@ -104,13 +205,28 @@ class RetrofitModule {
     @Provides
     fun provideRetrofitWithoutToken(
         @Named(WITHOUT_TOKEN_ANNOTATION) okHttpClient: OkHttpClient,
-        converter: Converter.Factory
+        moshi: Moshi
     ): Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addConverterFactory(converter)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))  // فقط Moshi
             .client(okHttpClient)
             .build()
 
+
+    @Provides
+    @Singleton
+    fun provideTokenAuthenticator(
+        dataStoreManager: DataStoreManager,
+
+        @Named(WITHOUT_TOKEN_ANNOTATION)
+        service: Services
+
+    ): TokenAuthenticator {
+
+        return TokenAuthenticator(
+            dataStoreManager,
+            service
+        )
+    }
 }

@@ -46,13 +46,21 @@ SafeApiRequest {
                                 val authErrorAdapter: JsonAdapter<AuthErrorResponse> = moshi.adapter(
                                     AuthErrorResponse::class.java)
 
-                                val message = errorAdapter.fromJson(
-                                    errorBody,
-                                )?.title
-                                    // Convert Error to AuthErrorResponse (for keycloak) when cant convert to ErrorResponse
-                                    ?: authErrorAdapter.fromJson(
-                                    errorBody,
-                                )?.title ?: "An unexpected error occurred"
+//                                val message = errorAdapter.fromJson(
+//                                    errorBody,
+//                                )?.message
+//                                    // Convert Error to AuthErrorResponse (for keycloak) when cant convert to ErrorResponse
+//                                    ?: authErrorAdapter.fromJson(
+//                                    errorBody,
+//                                )?.message ?: "An unexpected error occurred"
+
+                                val errorResponse = errorAdapter.fromJson(errorBody)
+
+                                val message = errorResponse?.let {
+                                    // اگه message وجود داره، همونو برگردون
+                                    // وگرنه error رو برگردون
+                                    it.message ?: it.error
+                                } ?: authErrorAdapter.fromJson(errorBody)?.message ?: "An unexpected error occurred"
 
                                 Timber.e("Error message: $message")
 

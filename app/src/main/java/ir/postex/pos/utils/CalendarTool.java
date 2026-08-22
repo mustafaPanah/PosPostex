@@ -67,7 +67,21 @@ public class CalendarTool {
     public int getIranianMonth() {
         return irMonth;
     }
+    public static long getCurrentTimestamp() {
+        return System.currentTimeMillis();
+    }
 
+    public static String getCurrentIsoDateTime() {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", java.util.Locale.US);
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+        return sdf.format(new java.util.Date());
+    }
+
+    public static String getCurrentIsoDate() {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US);
+        // استفاده از زمان محلی به جای UTC
+        return sdf.format(new java.util.Date());
+    }
     /**
      * getIranianDay: Returns the 'day' part of the Iranian date.
      *
@@ -533,5 +547,85 @@ public class CalendarTool {
         }
         return priceString;
     }
+    /**
+     * Converts ISO 8601 datetime string to Persian (Jalali) date and time
+     * Input format: 2026-05-29T21:30:40.319757625Z
+     * Output format: 1405/03/08 21:30:40
+     *
+     * @param isoDateTime ISO 8601 datetime string
+     * @return Persian date and time as string
+     */
+    public static String convertIsoToPersianDateTime(String isoDateTime) {
+        try {
+            // Remove nanoseconds if present and handle Z suffix
+            String cleanedDateTime = isoDateTime.replace("Z", "");
 
+            // Split date and time parts
+            String[] parts = cleanedDateTime.split("T");
+            String datePart = parts[0]; // 2026-05-29
+            String timePart = parts[1].split("\\.")[0]; // 21:30:40 (remove nanoseconds)
+
+            // Split date parts
+            String[] dateParts = datePart.split("-");
+            int year = Integer.parseInt(dateParts[0]);
+            int month = Integer.parseInt(dateParts[1]);
+            int day = Integer.parseInt(dateParts[2]);
+
+            // Create CalendarTool instance with Gregorian date
+            CalendarTool calendar = new CalendarTool(year, month, day);
+
+            // Get Persian date
+            String persianDate = calendar.getIranianDate(); // format: year/month/day
+
+            // Combine with time
+            return persianDate + " " + timePart;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Invalid date format: " + isoDateTime;
+        }
+    }
+
+    /**
+     * Converts ISO 8601 datetime string to Persian (Jalali) date only
+     * Input format: 2026-05-29T21:30:40.319757625Z
+     * Output format: 1405/03/08
+     *
+     * @param isoDateTime ISO 8601 datetime string
+     * @return Persian date as string
+     */
+    public static String convertIsoToPersianDate(String isoDateTime) {
+        try {
+            String datePart = isoDateTime.split("T")[0];
+            String[] dateParts = datePart.split("-");
+            int year = Integer.parseInt(dateParts[0]);
+            int month = Integer.parseInt(dateParts[1]);
+            int day = Integer.parseInt(dateParts[2]);
+
+            CalendarTool calendar = new CalendarTool(year, month, day);
+            return calendar.getIranianDate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Invalid date format: " + isoDateTime;
+        }
+    }
+
+    /**
+     * Converts ISO 8601 datetime string to Persian (Jalali) time only
+     * Input format: 2026-05-29T21:30:40.319757625Z
+     * Output format: 21:30:40
+     *
+     * @param isoDateTime ISO 8601 datetime string
+     * @return Time part as string
+     */
+    public static String convertIsoToPersianTime(String isoDateTime) {
+        try {
+            String timePart = isoDateTime.split("T")[1].split("\\.")[0];
+            return timePart;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Invalid time format";
+        }
+    }
 }

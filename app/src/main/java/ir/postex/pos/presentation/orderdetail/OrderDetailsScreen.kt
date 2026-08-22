@@ -1,7 +1,6 @@
 package ir.postex.pos.presentation.orderdetail
 
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,16 +17,59 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import ir.postex.pos.data.source.remote.network.Resource
+import ir.postex.pos.domain.model.enroll.EnrollResponse
+import ir.postex.pos.domain.model.inquiry.InquiryResponse
+import ir.postex.pos.domain.model.pos.PosResponse
+import ir.postex.pos.domain.model.shipment.ShipmentPayRequest
 import ir.postex.pos.presentation.main.navigation.NavigationRoutes
 import ir.postex.pos.presentation.theme.IranSans
 import ir.postex.pos.presentation.theme.MainPrimary
+import ir.postex.pos.utils.PriceFormatter
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import timber.log.Timber
 
 @Composable
 fun OrderDetailsScreen(
-    navController: NavHostController?
+    navController: NavHostController?,
+    parcelNo:String,
+    inquiryData: InquiryResponse?,
+    onLaunchPos: (amount: String, onResult: (PosResponse) -> Unit) -> Unit
 ) {
+
+
+    val viewModel: OrderDetailsViewModel = hiltViewModel()
+    var isLoading by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
+    val amountState by viewModel.stateGetAmuont.collectAsState()
+    var posResult by remember { mutableStateOf<PosResponse?>(null) }
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+
+        LaunchedEffect(amountState) {
+            if (amountState != null) {
+                when (amountState) {
+                    is Resource.Success<EnrollResponse> -> {
+                        navController?.navigate(NavigationRoutes.PaymentResultScreen(posResult!!.status,posResult!!.amount!!,posResult!!.rrn!!,posResult!!.time+" "+posResult!!.date))
+                    }
+
+                    is Resource.Error<EnrollResponse> -> {
+                        errorMessage = (amountState as Resource.Error<EnrollResponse>).message
+                            ?: "خطا در برقراری ارتباط"
+
+                        isLoading = false
+                    }
+
+                    is Resource.Loading<EnrollResponse> -> {
+                        isLoading = true
+                    }
+
+                    else -> {}
+                }
+            }
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -74,20 +116,57 @@ fun OrderDetailsScreen(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    DetailRow(title = "مبلغ قابل پرداخت (تومان)", value = "2000,000")
-                    DetailRow(title = "نوع سفارش", value = "پس کرایه")
-                    DetailRow(title = "تاریخ ثبت", value = "۱۴۰۴/۰۵/۰۱")
-                    repeat(8) {
-                        DetailRow(title = "میلاد برزگر", value = "میلاد برزگر")
-                    }
+                    DetailRow(title = "کد رهگیری", value = inquiryData?.trackingNo.toString())
+                    DetailRow(title = "نام و نام خانوادگی", value = inquiryData?.receiver?.name!!)
+                    DetailRow(
+                        title = "مبلغ قابل پرداخت(تومان)",
+                        value = PriceFormatter.format(inquiryData.totalPayableAmount.toString().substring(0,inquiryData.totalPayableAmount.toString().length-1))
+                    )
+//                    repeat(8) {
+//                        DetailRow(title = "میلاد برزگر", value = "میلاد برزگر")
+//                    }
                 }
             }
+            posResult?.let { r ->
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "وضعیت: ${if (r.status) "موفق" else "ناموفق"}")
+                Text(text = "مبلغ: ${r.amount ?: "-"}")
+                Text(text = "RRN: ${r.rrn ?: "-"}")
+                Text(text = "STAN: ${r.stan ?: "-"}")
+                Text(text = "پاسخ سوئیچ: ${r.response ?: "-"}")
+//                if (r.status)
+//                    navController?.navigate(
+//                        NavigationRoutes.PaymentResultScreen(
+//                            r.status,
+//                            r.amount!!,
+//                            r.rrn!!,
+//                            r.time!!
+//                        )
+//                    )
 
+            }
             Spacer(modifier = Modifier.weight(1f))
-
             // 🔘 دکمه تأیید و ادامه
             Button(
-                onClick = { navController?.navigate(NavigationRoutes.PaymentResultScreen) },
+                onClick = {
+                 //   navController?.navigate(NavigationRoutes.PaymentResultScreen(false,"1000","0","0"))
+                    onLaunchPos(inquiryData?.totalPayableAmount.toString()) { resp ->
+                        // وقتی پاسخ بازگشت، اینجا state آپدیت میشود و UI رفرش میشود
+                        posResult = resp
+
+                        if (resp.status) {
+                            resp.amount?.toLong()
+                                ?.let { resp.rrn?.let { it1 ->
+                                    resp.stan?.let { it2 ->
+                                        viewModel.postShipmentPay(parcelNo, ShipmentPayRequest(
+                                            it.toInt(),
+                                            it1, it2, 0L, 0L
+                                        ))
+                                    }
+                                } }
+                        }
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
@@ -116,16 +195,17 @@ private fun DetailRow(title: String, value: String) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = value,
-            fontSize = 14.sp,
-            color = Color.Black,
-
-        )
-        Text(
             text = title,
             fontSize = 14.sp,
             color = Color.Gray,
             fontFamily = IranSans
         )
+        Text(
+            text = value,
+            fontSize = 14.sp,
+            color = Color.Black,
+
+            )
+
     }
 }

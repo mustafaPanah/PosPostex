@@ -41,7 +41,8 @@ object DateUtils {
             }
             j_day_no -= jMonthDays[i]
         }
-        return Triple(jy, jm, jd)
+     //   return Triple(jy, jm, jd)
+        return Triple(jd, jm, jy)
     }
 
     /**

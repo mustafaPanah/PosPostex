@@ -12,8 +12,8 @@ plugins {
 
 val major = 1
 val minor = 0
-val patch = 0
-val suffix = "beta"
+val patch = 1
+val suffix = "beta2"
 
 val appVersionCode = (major * 1000000) + (minor * 10000) + (patch * 100)
 var appVersionName = "$major.$minor.$patch"
@@ -169,4 +169,7 @@ dependencies {
 
     // Timber
     implementation(libs.timber)
+
+    implementation("org.bouncycastle:bcprov-jdk15to18:1.70")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 }

@@ -3,7 +3,11 @@ package ir.postex.pos.data.source.remote
 import com.persianswitch.smartpos.webservice.LoginResponse
 import ir.postex.pos.domain.model.OTPResponse
 import ir.postex.pos.domain.model.VerifyOtpResponse
+import ir.postex.pos.domain.model.enroll.EnrollRequest
+import ir.postex.pos.domain.model.enroll.EnrollResponse
 import ir.postex.pos.domain.model.poslogin.LoginRequest
+import ir.postex.pos.domain.model.poslogin.RefreshTokenRequest
+import ir.postex.pos.domain.model.poslogin.RefreshTokenResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -27,5 +31,15 @@ interface Services {
     suspend fun login(
         @Body request: LoginRequest
     ): Response<LoginResponse>
+
+    @POST("/api/app/v1/pos/devices/enroll")
+    suspend fun enroll(
+        @Body request: EnrollRequest
+    ): Response<EnrollResponse>
+
+    @POST("/api/app/v1/auth/refresh-token")
+    suspend fun refreshToken(
+        @Body request: RefreshTokenRequest
+    ): Response<RefreshTokenResponse>
 
 }
