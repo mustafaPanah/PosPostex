@@ -12,8 +12,8 @@ plugins {
 
 val major = 1
 val minor = 0
-val patch = 1
-val suffix = "beta2"
+val patch = 0
+val suffix = "release"
 
 val appVersionCode = (major * 1000000) + (minor * 10000) + (patch * 100)
 var appVersionName = "$major.$minor.$patch"
@@ -37,7 +37,7 @@ android {
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
-            isDebuggable = true
+            isDebuggable = false
             buildConfigField("boolean", "IS_DEBUG", "false")
             signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
@@ -46,10 +46,14 @@ android {
             )
         }
         getByName("debug") {
-            isMinifyEnabled = false
-            isShrinkResources = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             isDebuggable = true
             buildConfigField("boolean", "IS_DEBUG", "true")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 

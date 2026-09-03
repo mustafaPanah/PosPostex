@@ -1,0 +1,117 @@
+-if class com.persianswitch.smartpos.webservice.LoginResponse
+-keepnames class com.persianswitch.smartpos.webservice.LoginResponse
+-if class com.persianswitch.smartpos.webservice.LoginResponse
+-keep class com.persianswitch.smartpos.webservice.LoginResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class com.persianswitch.smartpos.webservice.ValueAddedRequirements
+-keepnames class com.persianswitch.smartpos.webservice.ValueAddedRequirements
+-if class com.persianswitch.smartpos.webservice.ValueAddedRequirements
+-keep class com.persianswitch.smartpos.webservice.ValueAddedRequirementsJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.AuthErrorResponse
+-keepnames class ir.postex.pos.domain.model.AuthErrorResponse
+-if class ir.postex.pos.domain.model.AuthErrorResponse
+-keep class ir.postex.pos.domain.model.AuthErrorResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.ErrorResponse
+-keepnames class ir.postex.pos.domain.model.ErrorResponse
+-if class ir.postex.pos.domain.model.ErrorResponse
+-keep class ir.postex.pos.domain.model.ErrorResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+-if class ir.postex.pos.domain.model.ErrorResponse
+-keepnames class kotlin.jvm.internal.DefaultConstructorMarker
+-if class ir.postex.pos.domain.model.ErrorResponse
+-keepclassmembers class ir.postex.pos.domain.model.ErrorResponse {
+    public synthetic <init>(java.lang.Boolean,java.lang.String,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String,int,kotlin.jvm.internal.DefaultConstructorMarker);
+}
+
+-if class ir.postex.pos.domain.model.OTPResponse
+-keepnames class ir.postex.pos.domain.model.OTPResponse
+-if class ir.postex.pos.domain.model.OTPResponse
+-keep class ir.postex.pos.domain.model.OTPResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.User
+-keepnames class ir.postex.pos.domain.model.User
+-if class ir.postex.pos.domain.model.User
+-keep class ir.postex.pos.domain.model.UserJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.VerifyOtpResponse
+-keepnames class ir.postex.pos.domain.model.VerifyOtpResponse
+-if class ir.postex.pos.domain.model.VerifyOtpResponse
+-keep class ir.postex.pos.domain.model.VerifyOtpResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.balance.BalanceResponse
+-keepnames class ir.postex.pos.domain.model.balance.BalanceResponse
+-if class ir.postex.pos.domain.model.balance.BalanceResponse
+-keep class ir.postex.pos.domain.model.balance.BalanceResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.enroll.EnrollResponse
+-keepnames class ir.postex.pos.domain.model.enroll.EnrollResponse
+-if class ir.postex.pos.domain.model.enroll.EnrollResponse
+-keep class ir.postex.pos.domain.model.enroll.EnrollResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.inquiry.InquiryReceiver
+-keepnames class ir.postex.pos.domain.model.inquiry.InquiryReceiver
+-if class ir.postex.pos.domain.model.inquiry.InquiryReceiver
+-keep class ir.postex.pos.domain.model.inquiry.InquiryReceiverJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.inquiry.InquiryResponse
+-keepnames class ir.postex.pos.domain.model.inquiry.InquiryResponse
+-if class ir.postex.pos.domain.model.inquiry.InquiryResponse
+-keep class ir.postex.pos.domain.model.inquiry.InquiryResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.report.DailyReportItem
+-keepnames class ir.postex.pos.domain.model.report.DailyReportItem
+-if class ir.postex.pos.domain.model.report.DailyReportItem
+-keep class ir.postex.pos.domain.model.report.DailyReportItemJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.report.DailyReportResponse
+-keepnames class ir.postex.pos.domain.model.report.DailyReportResponse
+-if class ir.postex.pos.domain.model.report.DailyReportResponse
+-keep class ir.postex.pos.domain.model.report.DailyReportResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.report.TransactionsItem
+-keepnames class ir.postex.pos.domain.model.report.TransactionsItem
+-if class ir.postex.pos.domain.model.report.TransactionsItem
+-keep class ir.postex.pos.domain.model.report.TransactionsItemJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.report.TransactionsResponse
+-keepnames class ir.postex.pos.domain.model.report.TransactionsResponse
+-if class ir.postex.pos.domain.model.report.TransactionsResponse
+-keep class ir.postex.pos.domain.model.report.TransactionsResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}
+
+-if class ir.postex.pos.domain.model.topup.TopUpResponse
+-keepnames class ir.postex.pos.domain.model.topup.TopUpResponse
+-if class ir.postex.pos.domain.model.topup.TopUpResponse
+-keep class ir.postex.pos.domain.model.topup.TopUpResponseJsonAdapter {
+    public <init>(com.squareup.moshi.Moshi);
+}

@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "ir.postex.pos",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 1000000,
+      "versionName": "1.0.0-release",
+      "outputFile": "Postex-release-1.0.0-release-(1000000).apk"
+    }
+  ],
+  "elementType": "File",
+  "baselineProfiles": [
+    {
+      "minApi": 28,
+      "maxApi": 30,
+      "baselineProfiles": [
+        "baselineProfiles/1/Postex-release-1.0.0-release-(1000000).dm"
+      ]
+    },
+    {
+      "minApi": 31,
+      "maxApi": 2147483647,
+      "baselineProfiles": [
+        "baselineProfiles/0/Postex-release-1.0.0-release-(1000000).dm"
+      ]
+    }
+  ],
+  "minSdkVersionForDexing": 24
+}

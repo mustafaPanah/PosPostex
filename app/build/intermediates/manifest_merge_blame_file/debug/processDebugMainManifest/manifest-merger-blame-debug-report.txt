@@ -1,0 +1,355 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="ir.postex.pos"
+4    android:versionCode="1000000"
+5    android:versionName="1.0.0-release" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\android\project\postex\app\src\main\AndroidManifest.xml:5:5-67
+11-->D:\android\project\postex\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->D:\android\project\postex\app\src\main\AndroidManifest.xml:6:5-79
+12-->D:\android\project\postex\app\src\main\AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+13-->D:\android\project\postex\app\src\main\AndroidManifest.xml:7:5-79
+13-->D:\android\project\postex\app\src\main\AndroidManifest.xml:7:22-76
+14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+14-->D:\android\project\postex\app\src\main\AndroidManifest.xml:8:5-76
+14-->D:\android\project\postex\app\src\main\AndroidManifest.xml:8:22-73
+15
+16    <queries>
+16-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:7:5-13:15
+17        <intent>
+17-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:8:9-12:18
+18            <action android:name="android.intent.action.CREATE_DOCUMENT" />
+18-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:9:13-76
+18-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:9:21-73
+19
+20            <data android:mimeType="*/*" />
+20-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:11:13-44
+20-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:11:19-41
+21        </intent>
+22    </queries>
+23
+24    <uses-permission
+24-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:15:5-17:38
+25        android:name="android.permission.WAKE_LOCK"
+25-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:16:9-52
+26        android:maxSdkVersion="25" />
+26-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:17:9-35
+27    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+27-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:18:5-77
+27-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:18:22-74
+28    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+28-->[androidx.biometric:biometric:1.1.0] C:\Users\Asus\.gradle\caches\8.9\transforms\404b054d77be3caadd7183f2a8e3b7b3\transformed\biometric-1.1.0\AndroidManifest.xml:24:5-72
+28-->[androidx.biometric:biometric:1.1.0] C:\Users\Asus\.gradle\caches\8.9\transforms\404b054d77be3caadd7183f2a8e3b7b3\transformed\biometric-1.1.0\AndroidManifest.xml:24:22-69
+29    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+29-->[androidx.biometric:biometric:1.1.0] C:\Users\Asus\.gradle\caches\8.9\transforms\404b054d77be3caadd7183f2a8e3b7b3\transformed\biometric-1.1.0\AndroidManifest.xml:27:5-74
+29-->[androidx.biometric:biometric:1.1.0] C:\Users\Asus\.gradle\caches\8.9\transforms\404b054d77be3caadd7183f2a8e3b7b3\transformed\biometric-1.1.0\AndroidManifest.xml:27:22-71
+30
+31    <permission
+31-->[androidx.core:core:1.15.0] C:\Users\Asus\.gradle\caches\8.9\transforms\e9126a9658e547d71b37818412286e48\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+32        android:name="ir.postex.pos.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+32-->[androidx.core:core:1.15.0] C:\Users\Asus\.gradle\caches\8.9\transforms\e9126a9658e547d71b37818412286e48\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+33        android:protectionLevel="signature" />
+33-->[androidx.core:core:1.15.0] C:\Users\Asus\.gradle\caches\8.9\transforms\e9126a9658e547d71b37818412286e48\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+34
+35    <uses-permission android:name="ir.postex.pos.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+35-->[androidx.core:core:1.15.0] C:\Users\Asus\.gradle\caches\8.9\transforms\e9126a9658e547d71b37818412286e48\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+35-->[androidx.core:core:1.15.0] C:\Users\Asus\.gradle\caches\8.9\transforms\e9126a9658e547d71b37818412286e48\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+36
+37    <application
+37-->D:\android\project\postex\app\src\main\AndroidManifest.xml:10:5-41:19
+38        android:name="ir.postex.pos.MyApplication"
+38-->D:\android\project\postex\app\src\main\AndroidManifest.xml:11:9-38
+39        android:allowBackup="true"
+39-->D:\android\project\postex\app\src\main\AndroidManifest.xml:12:9-35
+40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+40-->[androidx.core:core:1.15.0] C:\Users\Asus\.gradle\caches\8.9\transforms\e9126a9658e547d71b37818412286e48\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
+41        android:dataExtractionRules="@xml/data_extraction_rules"
+41-->D:\android\project\postex\app\src\main\AndroidManifest.xml:13:9-65
+42        android:debuggable="true"
+43        android:extractNativeLibs="false"
+44        android:fullBackupContent="@xml/backup_rules"
+44-->D:\android\project\postex\app\src\main\AndroidManifest.xml:14:9-54
+45        android:icon="@mipmap/ic_app"
+45-->D:\android\project\postex\app\src\main\AndroidManifest.xml:15:9-38
+46        android:label="@string/app_name"
+46-->D:\android\project\postex\app\src\main\AndroidManifest.xml:16:9-41
+47        android:roundIcon="@mipmap/ic_app"
+47-->D:\android\project\postex\app\src\main\AndroidManifest.xml:17:9-43
+48        android:supportsRtl="true"
+48-->D:\android\project\postex\app\src\main\AndroidManifest.xml:18:9-35
+49        android:testOnly="true"
+50        android:theme="@style/Theme.Postex" >
+50-->D:\android\project\postex\app\src\main\AndroidManifest.xml:19:9-44
+51        <activity
+51-->D:\android\project\postex\app\src\main\AndroidManifest.xml:21:9-29:20
+52            android:name="ir.postex.pos.presentation.main.MainActivity2"
+52-->D:\android\project\postex\app\src\main\AndroidManifest.xml:22:13-60
+53            android:exported="true" >
+53-->D:\android\project\postex\app\src\main\AndroidManifest.xml:23:13-36
+54
+55            <!-- <intent-filter> -->
+56            <!-- <action android:name="android.intent.action.MAIN" /> -->
+57
+58
+59            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+60            <!-- </intent-filter> -->
+61        </activity>
+62        <activity
+62-->D:\android\project\postex\app\src\main\AndroidManifest.xml:30:9-40:20
+63            android:name="ir.postex.pos.presentation.main.MainActivity"
+63-->D:\android\project\postex\app\src\main\AndroidManifest.xml:31:13-59
+64            android:exported="true"
+64-->D:\android\project\postex\app\src\main\AndroidManifest.xml:32:13-36
+65            android:label="@string/app_name"
+65-->D:\android\project\postex\app\src\main\AndroidManifest.xml:33:13-45
+66            android:theme="@style/Theme.Postex" >
+66-->D:\android\project\postex\app\src\main\AndroidManifest.xml:34:13-48
+67            <intent-filter>
+67-->D:\android\project\postex\app\src\main\AndroidManifest.xml:35:13-39:29
+68                <action android:name="android.intent.action.MAIN" />
+68-->D:\android\project\postex\app\src\main\AndroidManifest.xml:36:17-69
+68-->D:\android\project\postex\app\src\main\AndroidManifest.xml:36:25-66
+69
+70                <category android:name="android.intent.category.LAUNCHER" />
+70-->D:\android\project\postex\app\src\main\AndroidManifest.xml:38:17-77
+70-->D:\android\project\postex\app\src\main\AndroidManifest.xml:38:27-74
+71            </intent-filter>
+72        </activity>
+73        <activity
+73-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:21:9-26:52
+74            android:name="com.chuckerteam.chucker.internal.ui.MainActivity"
+74-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:22:13-76
+75            android:label="@string/chucker_name"
+75-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:23:13-49
+76            android:launchMode="singleTask"
+76-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:24:13-44
+77            android:taskAffinity="com.chuckerteam.chucker.task"
+77-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:25:13-64
+78            android:theme="@style/Chucker.Theme" />
+78-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:26:13-49
+79        <activity
+79-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:27:9-30:52
+80            android:name="com.chuckerteam.chucker.internal.ui.transaction.TransactionActivity"
+80-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:28:13-95
+81            android:parentActivityName="com.chuckerteam.chucker.internal.ui.MainActivity"
+81-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:29:13-90
+82            android:theme="@style/Chucker.Theme" />
+82-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:30:13-49
+83
+84        <service
+84-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:32:9-35:72
+85            android:name="com.chuckerteam.chucker.internal.support.ClearDatabaseService"
+85-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:33:13-89
+86            android:exported="false"
+86-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:34:13-37
+87            android:permission="android.permission.BIND_JOB_SERVICE" />
+87-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:35:13-69
+88
+89        <receiver
+89-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:37:9-39:40
+90            android:name="com.chuckerteam.chucker.internal.support.ClearDatabaseJobIntentServiceReceiver"
+90-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:38:13-106
+91            android:exported="false" />
+91-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:39:13-37
+92
+93        <provider
+93-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:41:9-49:20
+94            android:name="com.chuckerteam.chucker.internal.support.ChuckerFileProvider"
+94-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:42:13-88
+95            android:authorities="ir.postex.pos.com.chuckerteam.chucker.provider"
+95-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:43:13-84
+96            android:exported="false"
+96-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:44:13-37
+97            android:grantUriPermissions="true" >
+97-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:45:13-47
+98            <meta-data
+98-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:46:13-48:66
+99                android:name="android.support.FILE_PROVIDER_PATHS"
+99-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:47:17-67
+100                android:resource="@xml/chucker_provider_paths" />
+100-->[com.github.chuckerteam.chucker:library:4.0.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f0e72f6918c4155b7add0b6ee1ba8d24\transformed\library-4.0.0\AndroidManifest.xml:48:17-63
+101        </provider>
+102
+103        <service
+103-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:24:9-32:19
+104            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+104-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:25:13-94
+105            android:enabled="true"
+105-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:26:13-35
+106            android:exported="false" >
+106-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:27:13-37
+107            <meta-data
+107-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:29:13-31:104
+108                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+108-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:30:17-76
+109                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+109-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:31:17-101
+110        </service>
+111
+112        <activity
+112-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:34:9-41:20
+113            android:name="androidx.credentials.playservices.HiddenActivity"
+113-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:35:13-76
+114            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+114-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:36:13-87
+115            android:enabled="true"
+115-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:37:13-35
+116            android:exported="false"
+116-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:38:13-37
+117            android:fitsSystemWindows="true"
+117-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:39:13-45
+118            android:theme="@style/Theme.Hidden" >
+118-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:40:13-48
+119        </activity>
+120        <activity
+120-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:42:9-49:20
+121            android:name="androidx.credentials.playservices.IdentityCredentialApiHiddenActivity"
+121-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:43:13-97
+122            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+122-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:44:13-87
+123            android:enabled="true"
+123-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:45:13-35
+124            android:exported="false"
+124-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:46:13-37
+125            android:fitsSystemWindows="true"
+125-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:47:13-45
+126            android:theme="@style/Theme.Hidden" >
+126-->[androidx.credentials:credentials-play-services-auth:1.5.0-rc01] C:\Users\Asus\.gradle\caches\8.9\transforms\a8d6fcb7fb13e351491faeb1f9ee9cfd\transformed\credentials-play-services-auth-1.5.0-rc01\AndroidManifest.xml:48:13-48
+127        </activity>
+128        <activity
+128-->[androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\Asus\.gradle\caches\8.9\transforms\95e17df27d92673ea77482631b8652c1\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+129            android:name="androidx.compose.ui.tooling.PreviewActivity"
+129-->[androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\Asus\.gradle\caches\8.9\transforms\95e17df27d92673ea77482631b8652c1\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+130            android:exported="true" />
+130-->[androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\Asus\.gradle\caches\8.9\transforms\95e17df27d92673ea77482631b8652c1\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+131        <activity
+131-->[androidx.compose.ui:ui-test-manifest:1.7.5] C:\Users\Asus\.gradle\caches\8.9\transforms\592cfd931269f03d7a0fa41805f29045\transformed\ui-test-manifest-1.7.5\AndroidManifest.xml:23:9-25:39
+132            android:name="androidx.activity.ComponentActivity"
+132-->[androidx.compose.ui:ui-test-manifest:1.7.5] C:\Users\Asus\.gradle\caches\8.9\transforms\592cfd931269f03d7a0fa41805f29045\transformed\ui-test-manifest-1.7.5\AndroidManifest.xml:24:13-63
+133            android:exported="true" />
+133-->[androidx.compose.ui:ui-test-manifest:1.7.5] C:\Users\Asus\.gradle\caches\8.9\transforms\592cfd931269f03d7a0fa41805f29045\transformed\ui-test-manifest-1.7.5\AndroidManifest.xml:25:13-36
+134        <activity
+134-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:23:9-27:75
+135            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+135-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:24:13-93
+136            android:excludeFromRecents="true"
+136-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:25:13-46
+137            android:exported="false"
+137-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:26:13-37
+138            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+138-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:27:13-72
+139        <!--
+140            Service handling Google Sign-In user revocation. For apps that do not integrate with
+141            Google Sign-In, this service will never be started.
+142        -->
+143        <service
+143-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:33:9-37:51
+144            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+144-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:34:13-89
+145            android:exported="true"
+145-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:35:13-36
+146            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+146-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:36:13-107
+147            android:visibleToInstantApps="true" />
+147-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\Asus\.gradle\caches\8.9\transforms\d10b8ef78b0ad4d6fce11fa20bfcd536\transformed\play-services-auth-21.1.1\AndroidManifest.xml:37:13-48
+148
+149        <activity
+149-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f17a9822d06595cb7b808d3aa81e03cf\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+150            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+150-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f17a9822d06595cb7b808d3aa81e03cf\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+151            android:exported="false"
+151-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f17a9822d06595cb7b808d3aa81e03cf\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+152            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+152-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Asus\.gradle\caches\8.9\transforms\f17a9822d06595cb7b808d3aa81e03cf\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+153
+154        <meta-data
+154-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\Asus\.gradle\caches\8.9\transforms\4c359cf8d6addea28a01fa7b15ed174f\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+155            android:name="com.google.android.gms.version"
+155-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\Asus\.gradle\caches\8.9\transforms\4c359cf8d6addea28a01fa7b15ed174f\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+156            android:value="@integer/google_play_services_version" />
+156-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\Asus\.gradle\caches\8.9\transforms\4c359cf8d6addea28a01fa7b15ed174f\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+157
+158        <provider
+158-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Asus\.gradle\caches\8.9\transforms\c64d0833fa9d4ebe8d8896d270190ef8\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+159            android:name="androidx.startup.InitializationProvider"
+159-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Asus\.gradle\caches\8.9\transforms\c64d0833fa9d4ebe8d8896d270190ef8\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+160            android:authorities="ir.postex.pos.androidx-startup"
+160-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Asus\.gradle\caches\8.9\transforms\c64d0833fa9d4ebe8d8896d270190ef8\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+161            android:exported="false" >
+161-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Asus\.gradle\caches\8.9\transforms\c64d0833fa9d4ebe8d8896d270190ef8\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+162            <meta-data
+162-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Asus\.gradle\caches\8.9\transforms\c64d0833fa9d4ebe8d8896d270190ef8\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+163                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+163-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Asus\.gradle\caches\8.9\transforms\c64d0833fa9d4ebe8d8896d270190ef8\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+164                android:value="androidx.startup" />
+164-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Asus\.gradle\caches\8.9\transforms\c64d0833fa9d4ebe8d8896d270190ef8\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+165            <meta-data
+165-->[androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\Asus\.gradle\caches\8.9\transforms\6af0541a0bbc49d417b7ca027cb82ff0\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:29:13-31:52
+166                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+166-->[androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\Asus\.gradle\caches\8.9\transforms\6af0541a0bbc49d417b7ca027cb82ff0\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:30:17-78
+167                android:value="androidx.startup" />
+167-->[androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\Asus\.gradle\caches\8.9\transforms\6af0541a0bbc49d417b7ca027cb82ff0\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:31:17-49
+168            <meta-data
+168-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+169                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+169-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+170                android:value="androidx.startup" />
+170-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+171        </provider>
+172
+173        <service
+173-->[androidx.room:room-runtime:2.5.2] C:\Users\Asus\.gradle\caches\8.9\transforms\f76b43c9a7d2c1ab70cbb3e83ee7b66e\transformed\room-runtime-2.5.2\AndroidManifest.xml:24:9-28:63
+174            android:name="androidx.room.MultiInstanceInvalidationService"
+174-->[androidx.room:room-runtime:2.5.2] C:\Users\Asus\.gradle\caches\8.9\transforms\f76b43c9a7d2c1ab70cbb3e83ee7b66e\transformed\room-runtime-2.5.2\AndroidManifest.xml:25:13-74
+175            android:directBootAware="true"
+175-->[androidx.room:room-runtime:2.5.2] C:\Users\Asus\.gradle\caches\8.9\transforms\f76b43c9a7d2c1ab70cbb3e83ee7b66e\transformed\room-runtime-2.5.2\AndroidManifest.xml:26:13-43
+176            android:exported="false" />
+176-->[androidx.room:room-runtime:2.5.2] C:\Users\Asus\.gradle\caches\8.9\transforms\f76b43c9a7d2c1ab70cbb3e83ee7b66e\transformed\room-runtime-2.5.2\AndroidManifest.xml:27:13-37
+177
+178        <receiver
+178-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+179            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+179-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+180            android:directBootAware="false"
+180-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+181            android:enabled="true"
+181-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+182            android:exported="true"
+182-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+183            android:permission="android.permission.DUMP" >
+183-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+184            <intent-filter>
+184-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+185                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+185-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+185-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+186            </intent-filter>
+187            <intent-filter>
+187-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+188                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+188-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+188-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+189            </intent-filter>
+190            <intent-filter>
+190-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+191                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+192            </intent-filter>
+193            <intent-filter>
+193-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+194                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Asus\.gradle\caches\8.9\transforms\01c906b89d2345f27ec325d4313af518\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+195            </intent-filter>
+196        </receiver>
+197    </application>
+198
+199</manifest>

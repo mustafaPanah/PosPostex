@@ -57,3 +57,29 @@
 # package واقعی خودت را جایگزین کن.
 -keep class ir.postex.pos.**.PosResponse { *; }
 -keep class ir.postex.pos.**.PosSettingsResponse { *; }
+
+# Kotlin Serialization
+-keep class kotlinx.serialization.** { *; }
+-keep class **$$serializer { *; }
+-keepclassmembers class ** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# FilterScreen
+-keep class ir.postex.pos.**.FilterScreen { *; }
+
+# Java/Android Security / SSL
+-keep class org.bouncycastle.** { *; }
+-keep class javax.net.ssl.** { *; }
+-keep class java.security.** { *; }
+# Android / Java security providers
+-keep class org.bouncycastle.** { *; }
+-keep class com.android.org.conscrypt.** { *; }
+
+# Keep security provider implementations
+-keep class * extends java.security.Provider { *; }
+-keep class * extends javax.net.ssl.SSLSocketFactory { *; }
+-keep class * extends javax.net.ssl.X509TrustManager { *; }
+
+-keep class org.bouncycastle.** { *; }
+-keep class **.BKS** { *; }

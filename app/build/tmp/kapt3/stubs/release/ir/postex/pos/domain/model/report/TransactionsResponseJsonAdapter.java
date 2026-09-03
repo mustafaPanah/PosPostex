@@ -1,0 +1,33 @@
+package ir.postex.pos.domain.model.report;
+
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000B\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0000\b\u0007\u0018\u00002\b\u0012\u0004\u0012\u00020\u00020\u0001B\r\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u00a2\u0006\u0002\u0010\u0005J\u0010\u0010\u000b\u001a\u00020\u00022\u0006\u0010\f\u001a\u00020\rH\u0016J\u001a\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u00112\b\u0010\u0012\u001a\u0004\u0018\u00010\u0002H\u0016J\b\u0010\u0013\u001a\u00020\u0014H\u0016R\u001a\u0010\u0006\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\b0\u00070\u0001X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\nX\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u0015"}, d2 = {"Lir/postex/pos/domain/model/report/TransactionsResponseJsonAdapter;", "Lcom/squareup/moshi/JsonAdapter;", "Lir/postex/pos/domain/model/report/TransactionsResponse;", "moshi", "Lcom/squareup/moshi/Moshi;", "(Lcom/squareup/moshi/Moshi;)V", "listOfTransactionsItemAdapter", "", "Lir/postex/pos/domain/model/report/TransactionsItem;", "options", "Lcom/squareup/moshi/JsonReader$Options;", "fromJson", "reader", "Lcom/squareup/moshi/JsonReader;", "toJson", "", "writer", "Lcom/squareup/moshi/JsonWriter;", "value_", "toString", "", "app_release"})
+public final class TransactionsResponseJsonAdapter extends com.squareup.moshi.JsonAdapter<ir.postex.pos.domain.model.report.TransactionsResponse> {
+    @org.jetbrains.annotations.NotNull()
+    private final com.squareup.moshi.JsonReader.Options options = null;
+    @org.jetbrains.annotations.NotNull()
+    private final com.squareup.moshi.JsonAdapter<java.util.List<ir.postex.pos.domain.model.report.TransactionsItem>> listOfTransactionsItemAdapter = null;
+    
+    public TransactionsResponseJsonAdapter(@org.jetbrains.annotations.NotNull()
+    com.squareup.moshi.Moshi moshi) {
+        super();
+    }
+    
+    @java.lang.Override()
+    @org.jetbrains.annotations.NotNull()
+    public java.lang.String toString() {
+        return null;
+    }
+    
+    @java.lang.Override()
+    @org.jetbrains.annotations.NotNull()
+    public ir.postex.pos.domain.model.report.TransactionsResponse fromJson(@org.jetbrains.annotations.NotNull()
+    com.squareup.moshi.JsonReader reader) {
+        return null;
+    }
+    
+    @java.lang.Override()
+    public void toJson(@org.jetbrains.annotations.NotNull()
+    com.squareup.moshi.JsonWriter writer, @org.jetbrains.annotations.Nullable()
+    ir.postex.pos.domain.model.report.TransactionsResponse value_) {
+    }
+}

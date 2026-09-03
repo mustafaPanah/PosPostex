@@ -39,7 +39,6 @@ import ir.postex.pos.domain.model.inquiry.InquiryResponse
 import ir.postex.pos.domain.model.pos.PosResponse
 import ir.postex.pos.domain.model.pos.PosSettingsResponse
 import ir.postex.pos.presentation.config.ConfigScreen
-import ir.postex.pos.presentation.filter.FilterScreen
 import ir.postex.pos.presentation.home.HomeScreen
 import ir.postex.pos.presentation.increaseBalanceScreen.IncreaseBalanceScreen
 import ir.postex.pos.presentation.login.LoginScreen
@@ -167,8 +166,7 @@ class MainActivity : ComponentActivity() {
                                     },
                                     navigateToHome = {
                                         navController.navigateSingleTopTo(
-                                            NavigationRoutes.LoginScreen
-                                         //   NavigationRoutes.HomeScreen
+                                            NavigationRoutes.HomeScreen
                                             // NavigationRoutes.IncreaseBalanceScreen
                                         )
                                     }
@@ -244,9 +242,9 @@ class MainActivity : ComponentActivity() {
 //                                    navController
 //                                )
 //                            }
-                            composable<NavigationRoutes.FilterScreen> {
-                                FilterScreen(navController)
-                            }
+//                            composable<NavigationRoutes.FilterScreen> {
+//                                FilterScreen(navController)
+//                            }
                         }
 
                     }

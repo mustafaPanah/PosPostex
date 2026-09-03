@@ -1,0 +1,19 @@
+package ir.postex.pos.utils;
+
+@kotlin.Metadata(mv = {1, 9, 0}, k = 2, xi = 48, d1 = {"\u0000\n\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0007\"\u000e\u0010\u0000\u001a\u00020\u0001X\u0086T\u00a2\u0006\u0002\n\u0000\"\u000e\u0010\u0002\u001a\u00020\u0001X\u0086T\u00a2\u0006\u0002\n\u0000\"\u000e\u0010\u0003\u001a\u00020\u0001X\u0086T\u00a2\u0006\u0002\n\u0000\"\u000e\u0010\u0004\u001a\u00020\u0001X\u0086T\u00a2\u0006\u0002\n\u0000\"\u000e\u0010\u0005\u001a\u00020\u0001X\u0086T\u00a2\u0006\u0002\n\u0000\"\u000e\u0010\u0006\u001a\u00020\u0001X\u0086T\u00a2\u0006\u0002\n\u0000\"\u000e\u0010\u0007\u001a\u00020\u0001X\u0086T\u00a2\u0006\u0002\n\u0000\u00a8\u0006\b"}, d2 = {"APPLICATION_JSON_HEADER_KEY", "", "AUTHORIZATION_HEADER_KEY", "BASE_URL", "CONTENT_TYPE_HEADER_KEY", "TOKEN_PREFIX", "WITHOUT_TOKEN_ANNOTATION", "WITH_TOKEN_ANNOTATION", "app_release"})
+public final class ConstantsKt {
+    @org.jetbrains.annotations.NotNull()
+    public static final java.lang.String WITH_TOKEN_ANNOTATION = "with_token";
+    @org.jetbrains.annotations.NotNull()
+    public static final java.lang.String WITHOUT_TOKEN_ANNOTATION = "without_token";
+    @org.jetbrains.annotations.NotNull()
+    public static final java.lang.String BASE_URL = "https://api.postex.ir";
+    @org.jetbrains.annotations.NotNull()
+    public static final java.lang.String AUTHORIZATION_HEADER_KEY = "Authorization";
+    @org.jetbrains.annotations.NotNull()
+    public static final java.lang.String CONTENT_TYPE_HEADER_KEY = "Content-Type";
+    @org.jetbrains.annotations.NotNull()
+    public static final java.lang.String APPLICATION_JSON_HEADER_KEY = "application/json";
+    @org.jetbrains.annotations.NotNull()
+    public static final java.lang.String TOKEN_PREFIX = "Bearer";
+}

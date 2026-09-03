@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "SHRUNK_RESOURCES_BINARY_FORMAT",
+    "kind": "Directory"
+  },
+  "applicationId": "ir.postex.pos",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 1000000,
+      "versionName": "1.0.0-release",
+      "outputFile": "shrunk-resources-binary-format-debug.ap_"
+    }
+  ],
+  "elementType": "File"
+}

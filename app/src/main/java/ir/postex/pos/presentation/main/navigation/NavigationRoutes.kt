@@ -34,11 +34,8 @@ sealed interface NavigationRoutes {
     data object IncreaseBalanceScreen : NavigationRoutes
     @Serializable
     data object ReportScreen : NavigationRoutes
-    @Serializable
-    data object FilterScreen : NavigationRoutes
 
-    @Serializable
-    data object PaymentSuccessScreen : NavigationRoutes
+
     @Serializable
     data object ConfigScreen : NavigationRoutes
 
