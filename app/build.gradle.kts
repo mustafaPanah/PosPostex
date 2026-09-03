@@ -13,6 +13,7 @@ plugins {
 val major = 1
 val minor = 0
 val patch = 0
+
 val suffix = "release"
 
 val appVersionCode = (major * 1000000) + (minor * 10000) + (patch * 100)
