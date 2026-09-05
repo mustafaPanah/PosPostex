@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27ba73f1-2cde-4565-92bc-043b115e3128" name="Changes" comment="git commit">
+    <list default="true" id="27ba73f1-2cde-4565-92bc-043b115e3128" name="Changes" comment="release 1.0.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +20,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Asus\.android\avd\Pixel_XL_API_30.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=576ff7a1e86b)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -237,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788468690480</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="release 1.0.0">
+      <option name="closed" value="true" />
+      <created>1788471690388</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788471690388</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,7 +276,8 @@
     <MESSAGE value="top up done" />
     <MESSAGE value="update proguard role" />
     <MESSAGE value="git commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="git commit" />
+    <MESSAGE value="release 1.0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="release 1.0.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
